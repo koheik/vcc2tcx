@@ -34,6 +34,7 @@ function convert($fin, $fout)
 {
 	$bhrb = false;
 	$bcad = false;
+	$balt = false;
 	
 	libxml_use_internal_errors(true);
 	$vcc = simplexml_load_file($fin, "SimpleXMLElement", LIBXML_PARSEHUGE);
@@ -144,8 +145,10 @@ function convert($fin, $fout)
 		$lon->appendChild($dom->createTextNode($tp["longitude"]));
 
 		# altitude
-        $alt = $ntp->appendChild($dom->createElement("AltitudeMeters"));
-        $alt->appendChild($dom->createTextNode($altvalue));
+		if ($balt) {
+	        $alt = $ntp->appendChild($dom->createElement("AltitudeMeters"));
+    	    $alt->appendChild($dom->createTextNode($altvalue));
+        }
         # dist
         $dsm = $ntp->appendChild($dom->createElement("DistanceMeters"));
         $dsm->appendChild($dom->createTextNode($dist_sum));
