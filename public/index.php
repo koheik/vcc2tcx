@@ -32,7 +32,7 @@ function hubeny($lat1, $lon1, $lat2, $lon2)
 
 function convert($fin, $fout)
 {
-	$bhrb = true;
+	$bhrb = false;
 	$bcad = false;
 	
 	libxml_use_internal_errors(true);
